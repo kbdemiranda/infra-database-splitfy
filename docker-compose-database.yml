@@ -1,0 +1,31 @@
+services:
+  splitfy-database:
+    container_name: splitfy-database
+    image: kbdemiranda/postgres:multiarch
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    restart: always
+    ports:
+      - "25432:5432"
+    healthcheck:
+      test: pg_isready -d splitfy -U postgres
+      interval: 5s
+      timeout: 15s
+      retries: 30
+    environment:
+      POSTGRES_DB: splitfy
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - splitfy-volume:/var/lib/postgresql/data
+    networks:
+      - splitfy-network-database
+
+volumes:
+  splitfy-volume:
+    driver: local
+
+networks:
+  splitfy-network-database:

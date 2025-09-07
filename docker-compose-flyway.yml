@@ -1,0 +1,16 @@
+services:
+  flyway:
+    container_name: flyway-splitfy
+    image: flyway/flyway
+    command: -url=${DB_URL}:${DB_PORT:-5432}/${DB_NAME} -user=${DB_USER} -password=${DB_PASSWORD} -connectRetries=60 migrate
+    volumes:
+      - ./scripts:/flyway/sql
+    networks:
+      - splitfy-network-database
+
+volumes:
+  splitfy-volume:
+    driver: local
+
+networks:
+  splitfy-network-database:
