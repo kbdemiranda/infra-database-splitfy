@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS platforms
     platform_token  UUID           NOT NULL,
     name            VARCHAR(50)    NOT NULL,
     price           NUMERIC(12, 2) NOT NULL,
+    currency        VARCHAR(3)     NOT NULL DEFAULT 'BRL',
     url             VARCHAR(50),
     service_type    VARCHAR(50)    NOT NULL,
 
