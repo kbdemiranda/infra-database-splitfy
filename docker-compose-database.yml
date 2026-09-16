@@ -1,7 +1,7 @@
 services:
   splitfy-database:
     container_name: splitfy-database
-    image: kbdemiranda/postgres:multiarch
+    image: kbdemiranda/postgres:17
     ulimits:
       memlock:
         soft: -1
@@ -15,7 +15,7 @@ services:
       timeout: 15s
       retries: 30
     environment:
-      POSTGRES_DB: splitfy
+      POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
