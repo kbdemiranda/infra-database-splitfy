@@ -15,7 +15,7 @@ services:
       timeout: 15s
       retries: 30
     environment:
-      POSTGRES_DB: postgres
+      POSTGRES_DB: splitfy
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
